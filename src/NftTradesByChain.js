@@ -39,6 +39,9 @@ const NftTradesByChain = () => {
             }
             return acc;
           }, []);
+          transformedData.sort((a, b) => {
+            return a.date.localeCompare(b.date);
+          });
           localStorage.setItem(CACHE_KEY, JSON.stringify(transformedData));
           localStorage.setItem(`${CACHE_KEY}_timestamp`, currentTime.toString());
 

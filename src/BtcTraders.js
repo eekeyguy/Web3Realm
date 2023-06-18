@@ -24,7 +24,7 @@ const BtcTraders = () => {
 
         // Format the Date strings
         rows = rows.map(row => {
-          const date = row.date.split('T')[0]; // Keep only the YYYY-MM-DD part
+          const date = row.date.split(' ')[0]; // Keep only the YYYY-MM-DD part
           return { ...row, date: date };
         });
 
