@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/web3realm/static/css/main.073c9b0a.css",
+    "main.js": "/web3realm/static/js/main.17e9e3de.js",
+    "static/js/787.2f8778f6.chunk.js": "/web3realm/static/js/787.2f8778f6.chunk.js",
+    "static/media/logo.svg": "/web3realm/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/web3realm/index.html",
+    "main.073c9b0a.css.map": "/web3realm/static/css/main.073c9b0a.css.map",
+    "main.17e9e3de.js.map": "/web3realm/static/js/main.17e9e3de.js.map",
+    "787.2f8778f6.chunk.js.map": "/web3realm/static/js/787.2f8778f6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.17e9e3de.js"
+  ]
+}
