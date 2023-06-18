@@ -23,7 +23,7 @@ const CustomizedChartDualAxis = ({ data, dataKeysLeft, dataKeysRight, heading })
     <div style={{ textAlign: 'center' }}>
       <h2 style={{ marginBottom: 20, color: '#CCCCCC' }}>{heading}</h2>
       <div style={{ display: 'inline-block', marginLeft: 'auto', marginRight: 'auto' }}>
-        <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <LineChart width={600} height={300} data={data} margin={{ top: 5, right: 0, left: 10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#444444" />
           <XAxis dataKey="date" stroke="#CCCCCC" tick={{ fill: '#CCCCCC' }} />
           <YAxis yAxisId="left" stroke="#CCCCCC" tick={{ fill: '#CCCCCC' }} />
