@@ -24,7 +24,7 @@ const GasFees = () => {
 
           // Format the Date strings
           const formattedRows = rows.map(row => {
-            const date = new Date(row.time).toISOString().split('T')[0]; // Keep only the YYYY-MM-DD part
+            const date = row.time.split(' ')[0]; // Keep only the YYYY-MM-DD part
             return { ...row, date: date };
           });
 

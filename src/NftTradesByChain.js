@@ -26,7 +26,7 @@ const NftTradesByChain = () => {
           const transformedData = rows.reduce((acc, row) => {
 
             const { chain, time, number_of_trades } = row;
-            const date = new Date(row.time).toISOString().split('T')[0];
+            const date = row.time.split(' ')[0];
             const existingData = acc.find(item => item.date === date);
 
             if (existingData) {
