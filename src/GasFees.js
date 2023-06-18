@@ -3,7 +3,7 @@ import axios from 'axios';
 import CustomizedChartDualAxis from './CustomizedChartDualAxis';
 
 const CACHE_KEY = 'GasFees';
-const CACHE_EXPIRATION = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
+const CACHE_EXPIRATION = 6*60*60*1000; // 6 hours in milliseconds
 
 const GasFees = () => {
   const [data, setData] = useState([]);
@@ -43,11 +43,13 @@ const GasFees = () => {
   }, []);
 
   const dataKeysLeft = [
-    { dataKey: 'ethereum_gas_usd', strokeColor: '#E31B6D' , label: 'Ethereum Gas (USD)' }
+    { dataKey: 'ethereum_gas_usd', strokeColor: '#E31B6D' , label: 'Ethereum' }
   ];
 
   const dataKeysRight = [
-    { dataKey: 'polygon_gas_usd', strokeColor: '#20E3B2', label: 'Polygon Gas (USD)' }
+    { dataKey: 'polygon_gas_usd', strokeColor: '#20E3B2', label: 'Polygon' },
+    { dataKey: 'arbitrum_gas_usd', strokeColor: '#F4E542', label: 'Arbitrum' },
+    { dataKey: 'optimism_gas_usd', strokeColor: '#4D6CFA', label: 'Optimism' }
   ];
 
   return (
@@ -55,7 +57,7 @@ const GasFees = () => {
       data={data}
       dataKeysLeft={dataKeysLeft}
       dataKeysRight={dataKeysRight}
-      heading="Ethereum & Polygon : Average Gas Per Transaction"
+      heading="Ethereum & L2 : Average Gas Per Transaction"
     />
   );
 };
