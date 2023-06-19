@@ -70,7 +70,7 @@ const NftTradesByChain = () => {
       data={data}
       dataKeysLeft={dataKeysLeft}
       dataKeysRight={dataKeysRight}
-      heading="NFT Trades per Blockchain"
+      heading="NFT Trades by Chain"
     />
   );
 };

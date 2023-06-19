@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const CustomizedChart = ({ data, dataKeys, heading }) => {
+  const [hidden, setHidden] = useState({});
+
+  const handleLegendClick = (e) => {
+    setHidden({ ...hidden, [e.dataKey]: !hidden[e.dataKey] });
+  };
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
@@ -17,7 +22,6 @@ const CustomizedChart = ({ data, dataKeys, heading }) => {
         </div>
       );
     }
-
     return null;
   };
 
@@ -44,7 +48,7 @@ const CustomizedChart = ({ data, dataKeys, heading }) => {
             content={<CustomTooltip />}
             position={{ y: -10 }}
           />
-          <Legend wrapperStyle={{ color: '#CCCCCC' }} />
+          <Legend onClick={handleLegendClick} wrapperStyle={{ color: '#CCCCCC' }} />
           {dataKeys.map((key, index) => (
             <Line
               key={index}
@@ -54,6 +58,7 @@ const CustomizedChart = ({ data, dataKeys, heading }) => {
               activeDot={{ r: 3 }}
               dot={{ r: 1 }}
               name={key.label}
+              hide={hidden[key.dataKey]}
             />
           ))}
         </LineChart>

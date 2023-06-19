@@ -48,4 +48,11 @@
 .chart-container {
   margin: 10px;
 }
+.dark-theme-select {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    border: 1px solid #444444;
+    border-radius: 4px;
+    padding: 8px;
+}
 

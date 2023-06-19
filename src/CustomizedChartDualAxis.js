@@ -1,24 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const CustomizedChartDualAxis = ({ data, dataKeysLeft, dataKeysRight, heading }) => {
-  const CustomTooltip = ({ active, payload, label }) => {
-      if (active && payload && payload.length) {
-        return (
-          <div className="custom-tooltip" style={{ marginBottom: 0, color: '#CCCCCC', textAlign: 'left' }}>
-            <p className="label" style={{ margin: 0 }}>{`Date: ${label}`}</p>
-            {payload.map((entry, index) => (
-              <p className="data" key={index} style={{ margin: 0 }}>
-                <span className="name">{entry.name}: </span>
-                <span className="value">{entry.value}</span>
-              </p>
-            ))}
-          </div>
-        );
-      }
+  const [hidden, setHidden] = useState({});
 
-      return null;
-    };
+  const handleLegendClick = (e) => {
+    setHidden({ ...hidden, [e.dataKey]: !hidden[e.dataKey] });
+  };
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip" style={{ marginBottom: 0, color: '#CCCCCC', textAlign: 'left' }}>
+          <p className="label" style={{ margin: 0 }}>{`Date: ${label}`}</p>
+          {payload.map((entry, index) => (
+            <p className="data" key={index} style={{ margin: 0 }}>
+              <span className="name">{entry.name}: </span>
+              <span className="value">{entry.value}</span>
+            </p>
+          ))}
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <div style={{ textAlign: 'center' }}>
       <h2 style={{ marginBottom: 20, color: '#CCCCCC' }}>{heading}</h2>
@@ -28,11 +35,8 @@ const CustomizedChartDualAxis = ({ data, dataKeysLeft, dataKeysRight, heading })
           <XAxis dataKey="date" stroke="#CCCCCC" tick={{ fill: '#CCCCCC' }} />
           <YAxis yAxisId="left" stroke="#CCCCCC" tick={{ fill: '#CCCCCC' }} />
           <YAxis yAxisId="right" orientation="right" stroke="#CCCCCC" tick={{ fill: '#CCCCCC' }} />
-           <Tooltip
-              content={<CustomTooltip />}
-              position={{ y: -10 }}
-            />
-          <Legend wrapperStyle={{ color: '#CCCCCC' }} />
+          <Tooltip content={<CustomTooltip />} position={{ y: -10 }} />
+          <Legend onClick={handleLegendClick} wrapperStyle={{ color: '#CCCCCC' }} />
 
           {dataKeysLeft.map((key, index) => (
             <Line
@@ -43,6 +47,7 @@ const CustomizedChartDualAxis = ({ data, dataKeysLeft, dataKeysRight, heading })
               activeDot={{ r: 3 }}
               dot={{ r: 1 }}
               name={key.label}
+              hide={hidden[key.dataKey]}
             />
           ))}
           {dataKeysRight.map((key, index) => (
@@ -54,6 +59,7 @@ const CustomizedChartDualAxis = ({ data, dataKeysLeft, dataKeysRight, heading })
               activeDot={{ r: 3 }}
               dot={{ r: 1 }}
               name={key.label}
+              hide={hidden[key.dataKey]}
             />
           ))}
         </LineChart>

@@ -43,13 +43,13 @@ const GasFees = () => {
   }, []);
 
   const dataKeysLeft = [
-    { dataKey: 'ethereum_gas_usd', strokeColor: '#E31B6D' , label: 'Ethereum' }
+    { dataKey: 'ethereum_gas_usd', strokeColor: '#E31B6D' , label: 'Ethereum (USD)' }
   ];
 
   const dataKeysRight = [
-    { dataKey: 'polygon_gas_usd', strokeColor: '#20E3B2', label: 'Polygon' },
-    { dataKey: 'arbitrum_gas_usd', strokeColor: '#F4E542', label: 'Arbitrum' },
-    { dataKey: 'optimism_gas_usd', strokeColor: '#4D6CFA', label: 'Optimism' }
+    { dataKey: 'polygon_gas_usd', strokeColor: '#20E3B2', label: 'Polygon (USD)' },
+    { dataKey: 'arbitrum_gas_usd', strokeColor: '#F4E542', label: 'Arbitrum (USD)' },
+    { dataKey: 'optimism_gas_usd', strokeColor: '#4D6CFA', label: 'Optimism (USD)' }
   ];
 
   return (

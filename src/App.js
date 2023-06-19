@@ -9,6 +9,9 @@ import AvgFeesData from './AvgFeesData';
 import TransactionDataBlockChain from './TransactionDataBlockChain';
 import TransactionData from './TransactionData';
 import NftTradesByChain from './NftTradesByChain';
+import TradesByPlatform from './TradesByPlatform';
+import VolumeByPlatform from './VolumeByPlatform';
+import NftLowestSalePrices from './NftLowestSalePrices';
 function App() {
   return (
     <div className="app-container">
@@ -37,9 +40,18 @@ function App() {
         <TransactionData/>
     </div>
     <div className="chart-container">
+        <TradesByPlatform/>
+    </div>
+    <div className="chart-container">
+        <VolumeByPlatform/>
+    </div>
+    <div className="chart-container">
         <NftTradesByChain/>
     </div>
+    <div className="chart-container">
+        <NftLowestSalePrices/>
     </div>
+  </div>
   );
 }
 
