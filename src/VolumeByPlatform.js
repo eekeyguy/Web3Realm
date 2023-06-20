@@ -45,7 +45,7 @@ const VolumeByPlatform = () => {
             if (!acc[time]) {
               acc[time] = {};
             }
-            acc[time][platform] = volume;
+            acc[time][platform] = parseFloat(parseFloat(volume).toFixed(2));;
             acc[time].date = date;
             return acc;
           }, {});
@@ -97,6 +97,7 @@ const VolumeByPlatform = () => {
     dataKey: platform,
     strokeColor: selectedPlatformColors[platform],
     label: platform.charAt(0).toUpperCase() + platform.slice(1) + " (USD)",
+    suffix: 'M'
   }));
 
   return (

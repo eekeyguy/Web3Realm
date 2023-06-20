@@ -25,9 +25,11 @@ const AvgFeesData = () => {
 
           // Format the Date strings
           const formattedRows = rows.map(row => {
-            const date =row.day.split(' ')[0]; // Keep only the YYYY-MM-DD part
-            return { ...row, date: date };
+              const date = row.day.split(' ')[0]; // Keep only the YYYY-MM-DD part
+              const avgFee = parseFloat(parseFloat(row.avg_fee_per_transactions).toFixed(2));
+              return { ...row, date: date, avg_fee_per_transactions: avgFee };
           });
+
 
           // Cache the fetched data
           localStorage.setItem(CACHE_KEY, JSON.stringify(formattedRows));
@@ -44,7 +46,7 @@ const AvgFeesData = () => {
   }, []);
 
   const dataKeys = [
-      { dataKey: 'avg_fee_per_transactions', strokeColor: '#20E3B2', label: 'BTC fees (USD)' },
+      { dataKey: 'avg_fee_per_transactions', strokeColor: '#20E3B2', label: 'BTC fees (USD)'},
     ];
 
     return (

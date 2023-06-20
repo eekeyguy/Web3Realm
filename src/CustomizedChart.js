@@ -7,23 +7,28 @@ const CustomizedChart = ({ data, dataKeys, heading }) => {
   const handleLegendClick = (e) => {
     setHidden({ ...hidden, [e.dataKey]: !hidden[e.dataKey] });
   };
+  // Create a mapping object for suffixes
+    const suffixMap = dataKeys.reduce((map, key) => {
+      map[key.dataKey] = key.suffix || '';
+      return map;
+    }, {});
 
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="custom-tooltip" style={{ marginBottom: 0, color: '#CCCCCC', textAlign: 'left' }}>
-          <p className="label" style={{ margin: 0 }}>{`Date: ${label}`}</p>
-          {payload.map((entry, index) => (
-            <p className="data" key={index} style={{ margin: 0 }}>
-              <span className="name">{entry.name}: </span>
-              <span className="value">{entry.value}</span>
-            </p>
-          ))}
-        </div>
-      );
-    }
-    return null;
-  };
+    const CustomTooltip = ({ active, payload, label }) => {
+      if (active && payload && payload.length) {
+        return (
+          <div className="custom-tooltip" style={{ marginBottom: 0, color: '#CCCCCC', textAlign: 'left' }}>
+            <p className="label" style={{ margin: 0 }}>{`Date: ${label}`}</p>
+            {payload.map((entry, index) => (
+              <p className="data" key={index} style={{ margin: 0 }}>
+                <span className="name">{entry.name}: </span>
+                <span className="value">{entry.value}{suffixMap[entry.dataKey]}</span>
+              </p>
+            ))}
+          </div>
+        );
+      }
+      return null;
+    };
 
   return (
     <div style={{ textAlign: 'center' }}>
