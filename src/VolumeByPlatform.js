@@ -6,21 +6,20 @@ import Select from 'react-select';
 const CACHE_KEY = 'VolumeByPlatform';
 const CACHE_EXPIRATION = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
 const AVAILABLE_COLORS =[
-   '#F27935', // Vibrant Orange
-   '#F4E542', // Bright Yellow
-   '#E31B6D', // Pinkish Red
-   '#20E3B2', // Turquoise
-   '#57A0D3', // Sky Blue
-   '#FF33FF', // Magenta
-   '#33FF57', // Bright Green
-   '#FF6E33', // Tangerine
-   '#D633FF', // Bright Purple
-   '#33FFD6', // Aqua
-   '#D4FF33', // Lime
-   '#FF5733', // Tomato Red
-   '#F2F542', // Lemon
-   '#42F4B6', // Mint Green
-   '#7642F4'  // Indigo
+    '#FF5733', // Vivid Orange
+    '#FFEB3B', // Bright Yellow
+    '#FF4081', // Hot Pink
+    '#00BCD4', // Cyan
+    '#FF9800', // Bright Orange
+    '#8BC34A', // Lime Green
+    '#E040FB', // Bright Purple
+    '#F44336', // Red
+    '#4CAF50', // Green
+    '#FFC107', // Amber
+    '#CDDC39', // Lime
+    '#9C27B0', // Deep Purple
+    '#2196F3', // Bright Blue
+    '#FF5252'  // Coral
  ];
 const VolumeByPlatform = () => {
   const [data, setData] = useState([]);

@@ -12,6 +12,7 @@ import NftTradesByChain from './NftTradesByChain';
 import TradesByPlatform from './TradesByPlatform';
 import VolumeByPlatform from './VolumeByPlatform';
 import NftLowestSalePrices from './NftLowestSalePrices';
+import NftHighestSalePrices from './NftHighestSalePrices';
 function App() {
   return (
     <div className="app-container">
@@ -20,6 +21,18 @@ function App() {
       </div>
       <div className="chart-container">
           <BtcTraders />
+      </div>
+      <div className="chart-container">
+          <TradesByPlatform/>
+      </div>
+      <div className="chart-container">
+          <VolumeByPlatform/>
+      </div>
+      <div className="chart-container">
+            <NftHighestSalePrices/>
+      </div>
+      <div className="chart-container">
+        <NftLowestSalePrices/>
       </div>
       <div className="chart-container">
         <EthereumWalletDataFetcher />
@@ -40,16 +53,7 @@ function App() {
         <TransactionData/>
     </div>
     <div className="chart-container">
-        <TradesByPlatform/>
-    </div>
-    <div className="chart-container">
-        <VolumeByPlatform/>
-    </div>
-    <div className="chart-container">
         <NftTradesByChain/>
-    </div>
-    <div className="chart-container">
-        <NftLowestSalePrices/>
     </div>
   </div>
   );

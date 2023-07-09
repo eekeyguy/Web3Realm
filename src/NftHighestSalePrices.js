@@ -3,28 +3,25 @@ import axios from 'axios';
 import Select from 'react-select';
 import CustomizedChart from './CustomizedChart';
 
-const CACHE_KEY = 'LowestSalePrices';
-const OPTIONS_CACHE_KEY = 'LowestSalePriceOptions';
+const CACHE_KEY = 'HighestSalePrices';
+const OPTIONS_CACHE_KEY = 'HighestSalePriceOptions';
 const CACHE_EXPIRATION = 6 * 60 * 60 * 1000; // 6 hours in milliseconds
 const AVAILABLE_COLORS = [
     '#FF5733', // Vivid Orange
     '#FFEB3B', // Bright Yellow
     '#FF4081', // Hot Pink
-    '#00BCD4', // Cyan
     '#FF9800', // Bright Orange
     '#8BC34A', // Lime Green
     '#E040FB', // Bright Purple
     '#F44336', // Red
     '#4CAF50', // Green
     '#FFC107', // Amber
-    '#3F51B5', // Indigo
     '#CDDC39', // Lime
     '#9C27B0', // Deep Purple
     '#2196F3', // Bright Blue
-    '#FF5252'  // Coral
 ];
 
-const NftLowestSalePrices = () => {
+const NftHighestSalePrices = () => {
   const [data, setData] = useState([]);
   const [selectedNames, setSelectedNames] = useState([]);
   const [nameColors, setNameColors] = useState({});
@@ -42,14 +39,14 @@ const NftLowestSalePrices = () => {
         setOptions(optionNames.map(key=>({value: key, label: key})));
       } else {
         try {
-          const { data: { result: { rows } } } = await axios.get('https://api.dune.com/api/v1/query/2647766/results?api_key=piyMny0VjuHCs1Mk5KLTXCwOpclpXcvQ');
+          const { data: { result: { rows } } } = await axios.get('https://api.dune.com/api/v1/query/2651564/results?api_key=piyMny0VjuHCs1Mk5KLTXCwOpclpXcvQ');
           let optionNames = [];
-          const transformedData = rows.reduce((acc, { time, name, Lowest_sale_price }) => {
+          const transformedData = rows.reduce((acc, { time, name, Highest_sale_price }) => {
             const date = time.split(' ')[0];
             if (!acc[date]) {
               acc[date] = {};
             }
-            acc[date][name] = Lowest_sale_price;
+            acc[date][name] = Highest_sale_price;
             if(!optionNames.includes(name)){
                 optionNames = [
                     ...optionNames,
@@ -113,7 +110,7 @@ const NftLowestSalePrices = () => {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <div>
             <h2 style={{color: '#CCCCCC' }}>
-              Lowest Sale Price of Top Collections
+              Highest Sale Price of Top Collections
             </h2>
         </div>
         <div style={{ width: 500, margin: 'auto', height: 50 }}>
@@ -147,4 +144,4 @@ const NftLowestSalePrices = () => {
   );
 };
 
-export default NftLowestSalePrices;
+export default NftHighestSalePrices;

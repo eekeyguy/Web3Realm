@@ -60,6 +60,7 @@ const CustomizedChart = ({ data, dataKeys, heading }) => {
               type="monotone"
               dataKey={key.dataKey}
               stroke={key.strokeColor}
+              connectNulls={true}
               activeDot={{ r: 3 }}
               dot={{ r: 1 }}
               name={key.label}
